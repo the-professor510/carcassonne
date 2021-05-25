@@ -1,0 +1,25 @@
+LEFT | RIGHT | TOP | BOTTOM | SPECIAL | CONNECTION | COUNT
+farm, farm, farm, farm, monastery, farm, 4
+farm, farm, city, farm, none, farm, 5
+city, city, farm, farm, none, city, 1
+city, city, farm, farm, shield, city, 2
+city, city, city, farm, none, city, 3
+city, city, city, farm, shield, city, 1
+city, city, city, city, shield, city, 1
+farm, city, city, farm, none, both, 3
+farm, city, city, farm, shield, both, 2
+farm, farm, city, city, none, farm, 3
+farm, city, city, farm, none, farm, 2
+farm, farm, farm, road, monastery, farm, 2
+city, city, city, road, none, city, 1
+city, city, city, road, shield, city, 2
+road, road, farm, farm, none, none, 8
+road, road, city, farm, none, none, 4
+road, city, city, road, none, city, 3
+road, city, city, road, shield, city, 2
+road, farm, farm, road, none, none, 9
+road, farm, city, road, none, none, 3
+farm, road, city, road, none, none, 3
+road, road, farm, road, village, none, 4
+road, road, city, road, village, none, 3
+road, road, road, road, village, none, 1
