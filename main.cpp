@@ -3,8 +3,12 @@
 #include "tile.hpp"
 
 int main(int argc, char const *argv[]) {
-    auto tile = new Tile("desert");
+    auto bag = get_tiles();
     
-    
+    for (auto tile : bag) {
+        std::cout << tile.repr() << "\n";
+    }
+
     return 0;
+
 }
