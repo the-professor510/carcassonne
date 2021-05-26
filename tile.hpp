@@ -5,14 +5,14 @@
 #include <string>
 #include <vector>
 
-enum Special : int8_t {
+enum class Special : int8_t {
     None,
     Monastery,
     Shield,
     Village,
 };
 
-enum Edge : int8_t {
+enum class Edge : int8_t {
     Farm,
     Road,
     City,
