@@ -5,13 +5,17 @@
 #include <string>
 #include <vector>
 
-enum class Special : int8_t {
+#include "useful_functions.hpp"
+
+// The types of special feature that a tile can have.
+enum class Feature : int8_t {
     None,
     Monastery,
     Shield,
     Village,
 };
 
+// The types of edge that a tile can have.
 enum class Edge : int8_t {
     Farm,
     Road,
@@ -20,13 +24,13 @@ enum class Edge : int8_t {
 
 auto string_to_feature(const std::string& string) {
     if (string.compare("none") == 0) {
-        return Special::None;
+        return Feature::None;
     } else if (string.compare("monastery") == 0) {
-        return Special::Monastery;
+        return Feature::Monastery;
     } else if (string.compare("village") == 0) {
-        return Special::Village;
+        return Feature::Village;
     } else {
-        return Special::Shield;
+        return Feature::Shield;
     }
 }
 
@@ -40,15 +44,15 @@ auto string_to_edge(const std::string& string) {
     }
 }
 
-auto feature_to_string(Special f) -> std::string {
+auto feature_to_string(Feature f) -> std::string {
     switch (f) {
-        case Special::None:
+        case Feature::None:
             return "none";
-        case Special::Monastery:
+        case Feature::Monastery:
             return "monastery";
-        case Special::Village:
+        case Feature::Village:
             return "village";
-        case Special::Shield:
+        case Feature::Shield:
             return "shield";
     }
 }
@@ -66,14 +70,14 @@ auto edge_to_string(Edge e) -> std::string {
 
 class Tile {
    private:
-    Special special_feature;
+    Feature special_feature;
     Edge l_feature, r_feature, u_feature, d_feature;
     bool divides_farm;
 
    public:
     Tile *l, *r, *u, *d;
 
-    Tile(Special special_feature, Edge l_feature, Edge r_feature, Edge u_feature, Edge d_feature) {
+    Tile(Feature special_feature, Edge l_feature, Edge r_feature, Edge u_feature, Edge d_feature) {
         this->special_feature = special_feature;
         this->l_feature = l_feature;
         this->r_feature = r_feature;
@@ -94,24 +98,19 @@ auto get_tiles() {
     std::vector<Tile> bag;
 
     // Create an input filestream
-    std::ifstream tileset("tileset.csv");
+    std::ifstream tileset_file("tileset.csv");
 
     // Make sure the file is open
-    if (!tileset.is_open()) throw std::runtime_error("Could not open file");
+    if (!tileset_file.is_open()) throw std::runtime_error("Could not open file");
 
     std::string line;
 
     // discard line 1
-    std::getline(tileset, line);
+    std::getline(tileset_file, line);
     // Read data, line by line
-    while (std::getline(tileset, line)) {
-        std::stringstream ss(line);
-        std::vector<std::string> result;
-        while (ss.good()) {
-            std::string substr;
-            std::getline(ss, substr, ',');
-            result.push_back(substr);
-        }
+    while (std::getline(tileset_file, line)) {
+        // populate a vector with the contents of a csv line.
+        auto result = string_split(line, ',');
 
         auto left = string_to_edge(result[0]);
         auto right = string_to_edge(result[1]);
