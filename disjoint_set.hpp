@@ -4,24 +4,25 @@
 #include <vector>
 
 // TODO: convert find() to iterative instead of recursive.
-// TODO: convert std::vector -> std::array templated on an int.
 
 // adapted from code found here https://www.geeksforgeeks.org/disjoint-set-data-structures/
+template <int N>
 class DisjointSet {
-    int n;
-    std::vector<int> rank, parent;
+    std::array<int, N> rank, parent;
 
    public:
     // Constructor to create and
-    // initialize sets of n items
-    DisjointSet(int n) {
-        rank = std::vector<int>(n);
-        parent = std::vector<int>(n);
-        this->n = n;
+    // initialize sets of N items
+    DisjointSet() {
+        std::fill(rank.begin(), rank.end(), 0);
         make_set();
     }
 
-    // Creates n single item sets
+    auto get_size() -> int {
+        return N;
+    }
+
+    // Creates N single item sets
     void make_set() {
         // fills parent with the numbers from 0 -> n - 1.
         std::iota(parent.begin(), parent.end(), 0);
