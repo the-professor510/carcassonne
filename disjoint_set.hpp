@@ -2,11 +2,12 @@
 
 #include <numeric>
 #include <vector>
+#include <array>
 
 // TODO: convert find() to iterative instead of recursive.
 
 // adapted from code found here https://www.geeksforgeeks.org/disjoint-set-data-structures/
-template <int N>
+template <size_t N>
 class DisjointSet {
     std::array<int, N> rank, parent;
 
@@ -18,7 +19,7 @@ class DisjointSet {
         make_set();
     }
 
-    auto get_size() -> int {
+    auto get_size() -> size_t {
         return N;
     }
 
