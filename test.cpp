@@ -33,13 +33,20 @@ auto disjoint_set_union_test() {
     a.unify(1, 2);
 
     if (!a.are_same_set(1, 2)) return false;
+    if (!a.are_same_set(0, 2)) return false;
+
+    a.unify(50, 2);
+
+    if (!a.are_same_set(1, 2)) return false;
+    if (!a.are_same_set(0, 2)) return false;
+    if (!a.are_same_set(0, 50)) return false;
 
     return true;
 }
 
 auto run() {
-    std::cout << "disjoint_set_init_test: " << (disjoint_set_init_test() ? "PASS" : "FAIL") << '\n';
-    std::cout << "disjoint_set_union_test: " << (disjoint_set_union_test() ? "PASS" : "FAIL") << '\n';
+    std::cout << "disjoint_set_init_test: " << (disjoint_set_init_test() ? "PASS ✅" : "FAIL ❌") << '\n';
+    std::cout << "disjoint_set_union_test: " << (disjoint_set_union_test() ? "PASS ✅" : "FAIL ❌") << '\n';
 }
 }  // namespace DisjointSetTests
 

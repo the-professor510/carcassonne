@@ -96,6 +96,7 @@ class Tile {
 
 auto get_tiles() {
     std::vector<Tile> bag;
+    bag.reserve(100);
 
     // Create an input filestream
     std::ifstream tileset_file("tileset.csv");

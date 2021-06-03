@@ -5,6 +5,7 @@
 #include <array>
 
 // TODO: convert find() to iterative instead of recursive.
+// TODO: use an enum class for I/O
 
 // adapted from code found here https://www.geeksforgeeks.org/disjoint-set-data-structures/
 template <size_t N>
