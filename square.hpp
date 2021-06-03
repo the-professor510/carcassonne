@@ -68,16 +68,16 @@ auto edge_to_string(Edge e) -> std::string {
     }
 }
 
-class Tile {
+class Square {
    private:
     Feature special_feature;
     Edge l_feature, r_feature, u_feature, d_feature;
     bool divides_farm;
 
    public:
-    Tile *l, *r, *u, *d;
+    Square *l, *r, *u, *d;
 
-    Tile(Feature special_feature, Edge l_feature, Edge r_feature, Edge u_feature, Edge d_feature) {
+    Square(Feature special_feature, Edge l_feature, Edge r_feature, Edge u_feature, Edge d_feature) {
         this->special_feature = special_feature;
         this->l_feature = l_feature;
         this->r_feature = r_feature;
@@ -95,7 +95,7 @@ class Tile {
 };
 
 auto get_tiles() {
-    std::vector<Tile> bag;
+    std::vector<Square> bag;
     bag.reserve(100);
 
     // Create an input filestream
